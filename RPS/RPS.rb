@@ -19,7 +19,7 @@ class RPS
   end
   
   def play
-      @moves = ['rock', 'paper', 'scissors']
+      @moves = ['rock', 'paper', 'scissors',]
       @player_choice = $stdin.gets.chomp.downcase
       @opponent_choice = @moves.sample
   end
@@ -90,8 +90,8 @@ class GameWindow < Gosu::Window
   
 end #end of Gamewindow Class
 
-window = GameWindow.new
-window.show
+#window = GameWindow.new
+#window.show
 
 game = RPS.new
 game.setup
