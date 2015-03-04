@@ -55,7 +55,7 @@ class RPS
       puts "You lose. Wow. You must feel terrible."
       exit
   end
-end 
+end  #end of a the case for win conditions.
    
    def run
        loop do
@@ -63,7 +63,7 @@ end
          play
          checkwinner
        end
-   end
+   end #end of the "run" loop
    
 end #end of RPS Class
 
@@ -72,7 +72,8 @@ class GameWindow < Gosu::Window
   def initialize
     super 1900, 1000, false
     self.caption = "SUPER ULTRA ARCADE ROCK PAPER SCISSORS ARENA ULTIMATE GAME OF THE YEAR EDITION"
-    
+
+    @oopponent_sprite = Gosu::Image.new(self, "MegaMan.jpg" false)
     @background_image = Gosu::Image.new(self, "arena.jpg", true)
     @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
   end
@@ -83,6 +84,7 @@ class GameWindow < Gosu::Window
 
   def draw
     @background_image.draw(0,0,0)
+    @opponent_sprite.draw(0,0,0)
   end
   def needs_cursor?
     true
@@ -90,8 +92,8 @@ class GameWindow < Gosu::Window
   
 end #end of Gamewindow Class
 
-#window = GameWindow.new
-#window.show
+window = GameWindow.new
+window.show
 
 game = RPS.new
 game.setup
