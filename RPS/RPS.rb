@@ -72,8 +72,9 @@ class GameWindow < Gosu::Window
   def initialize
     super 1900, 1000, false
     self.caption = "SUPER ULTRA ARCADE ROCK PAPER SCISSORS ARENA ULTIMATE GAME OF THE YEAR EDITION"
-
-    @oopponent_sprite = Gosu::Image.new(self, "MegaMan.jpg" false)
+    
+    @player_sprite = Gosu::Image.new(self, "PlAYER.png", false)   
+    @opponent_sprite = Gosu::Image.new(self, "MegaMan.jpg", false)
     @background_image = Gosu::Image.new(self, "arena.jpg", true)
     @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
   end
@@ -84,7 +85,8 @@ class GameWindow < Gosu::Window
 
   def draw
     @background_image.draw(0,0,0)
-    @opponent_sprite.draw(0,0,0)
+    @player_sprite.draw(-600,-200,1)
+    @opponent_sprite.draw(1250,150,1)
   end
   def needs_cursor?
     true
