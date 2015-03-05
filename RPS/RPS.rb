@@ -75,12 +75,14 @@ class GameWindow < Gosu::Window
     
     @player_sprite = Gosu::Image.new(self, "PlAYER.png", false)   
     @opponent_sprite = Gosu::Image.new(self, "MegaMan.jpg", false)
+    @rock_sprite = Gosu::Image.new(self, "rock.png", false)
+    @paper_sprite = Gosu::Image.new(self, "paper.png", false)
+    @scissors_sprite = Gosu::Image.new(self, "scissors.png", false)
     @background_image = Gosu::Image.new(self, "arena.jpg", true)
     @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
   end
 
   def update
-    
   end
 
   def draw
