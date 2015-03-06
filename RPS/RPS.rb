@@ -79,6 +79,7 @@ class GameWindow < Gosu::Window
     @paper_sprite = Gosu::Image.new(self, "paper.png", false)
     @scissors_sprite = Gosu::Image.new(self, "scissors.png", false)
     @background_image = Gosu::Image.new(self, "arena.jpg", true)
+    @textbox_image = Gosu::Image.new(self,"text_box.png", true)
     @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
   end
 
@@ -88,18 +89,27 @@ class GameWindow < Gosu::Window
   def draw
     @background_image.draw(0,0,0)
     @player_sprite.draw(-600,-200,1)
-    @opponent_sprite.draw(1250,150,1)
+    @opponent_sprite.draw(1250,0,1)
+    @rock_sprite.draw(600,400,1)
+    @paper_sprite.draw(1000,400,1)
+    @scissors_sprite.draw(1400,400,1)
+    @textbox_image.draw(600,700,1)
+    @font.draw("YOU HAVE BEEN CHALLENGED BY ROCKMAN!", 650, 800, 2, 2, 2, 0xff000000)
+    @font.draw("CLICK ANYWHERE TO START", 650, 900, 2, 2, 2, 0xff000000)
   end
+  
   def needs_cursor?
     true
   end
   
+  def button_down(id)
+  end
 end #end of Gamewindow Class
 
 window = GameWindow.new
 window.show
 
-game = RPS.new
-game.setup
-game.run
+#game = RPS.new
+#game.setup
+#game.run
 
