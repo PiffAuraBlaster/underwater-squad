@@ -1,17 +1,12 @@
 class RPS
-  attr_accessor :player_score
+  attr_accessor :player_score 
   
   def initialize()
     @player_score = 0
     @opponent_score = 0
-  end 
-  
-  def setup
-    puts "ARE YOU READY TO PLAY?"
-    puts "You will play best out of 5 games!"
     @game_number = 1
-  end  
-  # This is just to create a "hello you are starting a game" message.
+  end 
+  # Initializes the score values and the game numberat the beginning.
   
   def start
       puts "This is a 5 game tournament. This is game #{@game_number}"
@@ -27,36 +22,46 @@ class RPS
   # String -> String
   # Takes a typed in string which is either rock, paper, or scissors and uses it as the move for the @player_choice and saves that for later use in checkwinner.
   
-  def comparison
-  end
+  def comparison(first, second)
+    case [first, second]
+      when ['rock', 'scissors'], ['scissors', 'paper'], ['paper', 'rock'] 
+        -1
+      when ['rock', 'rock'], ['scissors', 'scissors'], ['paper', 'paper']
+         0
+      when ['rock', 'paper'], ['scissors', 'rock'], ['paper', 'scissors']
+         1
+      else
+        puts ERROR
+      end 
+  end #End of comparison
   
   def givescore  
-   case [@player_choice, @opponent_choice ]
-     when ['rock', 'scissors'], ['scissors', 'paper'], ['paper', 'rock'] 
-       puts "You get a point!" 
+    x = comparison(@player_choice, @opponent_choice)
+   if x == -1
        @player_score += 1
        @game_number += 1
-     when ['rock', 'rock'], ['scissors', 'scissors'], ['paper', 'paper']
-       puts "Draw! Replay round."
-     when ['rock', 'paper'], ['scissors', 'rock'], ['paper', 'scissors']
-       puts "Your Opponent gets a point!"
+     elsif x == 0
+       @player_score += 0
+       @opponent_score += 0
+       @game_number += 0
+     elsif x == 1
        @opponent_score += 1
        @game_number += 1
      else
-       puts "WRONG. THERE ARE ONLY 3 CHOICES. ROCK, PAPER, OR SCISSORS." 
+       puts ERROR
      end 
+   end #End of point giving condition.
  
 
 
-  case checkend
-    when @player_score == 3
+  def checkend
+    if @player_score == 3
       puts "Congrats, you beat a computer. Your parents must be so proud."
       exit
-    when @opponent_score == 3
+    elsif @opponent_score == 3
       puts "You lose. Wow. You must feel terrible."
       exit
-  end
-end  #end of a the case for win conditions.
+  end #End of checking for winner
    
    def run
        loop do
