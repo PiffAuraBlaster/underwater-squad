@@ -1,13 +1,15 @@
 require 'minitest/autorun'
-require './RPS'
+require 'gosu'
+require_relative 'RPS_Definitions'
 
-Class TestRPS < Minitest::Test
-
-def setup
-  @RPS = RPS.new
-end
-
-def game_number_is_1
-  assert_equal "1", @game_number
+describe "RPS" do
+  
+  before do 
+    @game = RPS.new
+  end
+  
+  it "has player score start at 0" do
+    @game.player_score.must_equal 0
+  end
 end
 
