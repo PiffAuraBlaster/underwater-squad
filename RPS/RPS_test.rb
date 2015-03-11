@@ -39,7 +39,5 @@ describe "RPS" do
   it "equals -1 when scissors against rock" do
     @game.comparison('scissors', 'rock').must_equal 1
   end
-  
-  it "adds 1 to player_score when"
 end
 
