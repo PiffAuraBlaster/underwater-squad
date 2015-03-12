@@ -34,7 +34,7 @@ int main()
 			
 		if((player == 1 && opponent == 3)||
 		   (player == 2 && opponent == 1)||
-		   (player == 3 && oppponent == 2))
+		   (player == 3 && opponent == 2))
 		{
 			cout <<"You beat the computer! Congrats!" << endl;
 		}
