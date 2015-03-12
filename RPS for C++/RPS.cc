@@ -21,8 +21,28 @@ int main()
 		cin >> player;
 		cout << endl;
 		
-		randomNum = (rand()%3)+1;
+		opponent = (rand()%3)+1;
 		
+		if(player == -1)
+		{
+			return 0;
+		}
+		if(opponent == player)
+		{
+			cout << "Draw! Try again!" << endl;
+		}
+			
+		if((player == 1 && opponent == 3)||
+		   (player == 2 && opponent == 1)||
+		   (player == 3 && oppponent == 2))
+		{
+			cout <<"You beat the computer! Congrats!" << endl;
+		}
+		else
+		{
+			cout << "You lost to a computer... how terrible..." << endl;
+		}
+	}
 		
 	
 	return 0;
