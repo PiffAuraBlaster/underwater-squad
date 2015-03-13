@@ -7,14 +7,8 @@ class RPS
     @opponent_score = 0
     @game_number = 1
   end 
-  # Initializes the score values and the game numberat the beginning.
-  
-  def start
-      puts "This is a 5 game tournament. This is game #{@game_number}"
-      puts "Select your move: enter rock, paper or scissors"
-  end
-  #Displays what game number you are on a prompts user for their move. 
-   
+  # Initializes the score values and the game number at the beginning.
+     
   def play
       @moves = ['rock', 'paper', 'scissors',]
       @player_choice = $stdin.gets.chomp.downcase
@@ -48,13 +42,9 @@ class RPS
      elsif x == 1
        @opponent_score += 1
        @game_number += 1
-     else
-       puts ERROR
      end 
    end #End of givepoints
  
-
-
   def checkend
     if @player_score == 3
       playerwin
@@ -67,7 +57,6 @@ class RPS
    
    def run
        loop do
-         start
          play
          comparison
          givepoints
@@ -78,12 +67,13 @@ class RPS
 end #end of RPS Class
 
 
+
 class GameWindow < Gosu::Window
   def initialize
     super 1900, 1000, false
     self.caption = "SUPER ULTRA ARCADE ROCK PAPER SCISSORS ARENA ULTIMATE GAME OF THE YEAR EDITION"
     
-    @game = RPS.new
+
     @player_sprite = Gosu::Image.new(self, "PlAYER.png", false)   
     @opponent_sprite = Gosu::Image.new(self, "MegaMan.jpg", false)
     @rock_sprite = Gosu::Image.new(self, "rock.png", false)
@@ -95,6 +85,7 @@ class GameWindow < Gosu::Window
     @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
     @textline
     @textline2
+    
   end
 
   def update
@@ -109,7 +100,7 @@ class GameWindow < Gosu::Window
     @scissors_sprite.draw(1400,400,1)
     @textbox_image.draw(600,700,1) 
     @textline = @font.draw("YOU HAVE BEEN CHALLENGED BY ROCKMAN!", 650, 800, 2, 2, 2, 0xff000000)
-    @textline2 = @font.draw("MAKE YOUR MOVE", 650, 900, 2, 2, 2, 0xff000000)
+    @textline2 = @font.draw("CLICK TO MAKE YOUR MOVE!", 650, 900, 2, 2, 2, 0xff000000)
     
     if @opponent_choice == 'rock'
       @rock_sprite.draw(750,50,1)
@@ -142,7 +133,7 @@ class GameWindow < Gosu::Window
       paper
     elsif mouse_x > 1399 and mouse_x < 1690 and mouse_y < 650 and  mouse_y > 400
       scissors
-  end
-end
+    end 
+  end #end of handle_mouse_click
       
 end #end of Gamewindow Class
