@@ -1,0 +1,6 @@
+#include "Pods-Gosu.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/Gosu" "${PODS_ROOT}/Headers/Private/Gosu/ogg" "${PODS_ROOT}/Headers/Private/Gosu/vorbis" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Gosu" "${PODS_ROOT}/Headers/Public/Gosu/ogg" "${PODS_ROOT}/Headers/Public/Gosu/vorbis"
+OTHER_LDFLAGS = ${PODS_GOSU_OTHER_LDFLAGS} -ObjC
+PODS_ROOT = ${SRCROOT}
+SKIP_INSTALL = YES

@@ -1,0 +1,1 @@
+PODS_GOSU_OTHER_LDFLAGS = /usr/local/lib/libSDL2.a -l"iconv" -framework "ApplicationServices" -framework "AudioToolbox" -framework "AudioUnit" -framework "Carbon" -framework "Cocoa" -framework "CoreAudio" -framework "ForceFeedback" -framework "IOKit" -framework "OpenAL" -framework "OpenGL"

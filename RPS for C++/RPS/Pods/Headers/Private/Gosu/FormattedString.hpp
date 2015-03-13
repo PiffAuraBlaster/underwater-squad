@@ -1,0 +1,1 @@
+../../../Gosu/src/Text/FormattedString.hpp

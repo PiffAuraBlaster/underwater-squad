@@ -1,3 +1,10 @@
+//
+//  main.m
+//  RPS
+//
+//  Created by Kyle Napod on 3/13/15.
+//  Copyright (c) 2015 Kyle Napod. All rights reserved.
+//
 
 #include <iostream>
 #include <cstdlib>
@@ -14,11 +21,12 @@ using namespace std;
 
 class GameWindow : public Gosu::Window
 {
+    std::auto_ptr<Gosu::Image> backgroundImage;
 public:
     GameWindow()
     :   Window(640, 480, false)
     {
-        setCaption(L"Gosu Tutorial Game");
+        setCaption(L"SUPER AMAZING ROCK PAPER SCISSORS PALOOZA");
     }
     
     void update()

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>1F6CE623-2C6C-481C-B4D4-B787C069A33B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>RPS</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2674FCE1DD565F9D23829359EAB0BEBA469330AB</key>
+		<string>https://github.com/PiffAuraBlaster/underwater-squad.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>RPS for C++/RPS/RPS.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2674FCE1DD565F9D23829359EAB0BEBA469330AB</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/PiffAuraBlaster/underwater-squad.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2674FCE1DD565F9D23829359EAB0BEBA469330AB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2674FCE1DD565F9D23829359EAB0BEBA469330AB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Git%20Lab%206</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,188 @@
+{
+  "name": "Gosu",
+  "version": "0.0.1",
+  "summary": "2D game development library.",
+  "homepage": "http://libgosu.org/",
+  "documentation_url": "http://libgosu.org/cpp/",
+  "license": {
+    "type": "MIT",
+    "file": "COPYING"
+  },
+  "authors": {
+    "Julian Raschke": "julian@raschke.de"
+  },
+  "source": {
+    "git": "https://github.com/jlnr/gosu.git"
+  },
+  "compiler_flags": "-DGOSU_DEPRECATED= -Wno-conversion",
+  "subspecs": [
+    {
+      "name": "libogg",
+      "header_dir": "ogg",
+      "compiler_flags": "-Wno-comment -Wno-unused-variable -Wno-shift-op-parentheses -Wno-shorten-64-to-32",
+      "public_header_files": "dependencies/libogg/include/ogg",
+      "source_files": [
+        "dependencies/libogg/include/ogg",
+        "dependencies/libogg/src"
+      ]
+    },
+    {
+      "name": "libvorbis",
+      "dependencies": {
+        "Gosu/libogg": [
+
+        ]
+      },
+      "compiler_flags": "-Wno-comment -Wno-unused-variable -Wno-shift-op-parentheses -Wno-shorten-64-to-32",
+      "header_dir": "vorbis",
+      "public_header_files": "dependencies/libvorbis/include/vorbis",
+      "source_files": [
+        "dependencies/libvorbis/lib/analysis.c",
+        "dependencies/libvorbis/lib/bitrate.c",
+        "dependencies/libvorbis/lib/block.c",
+        "dependencies/libvorbis/lib/codebook.c",
+        "dependencies/libvorbis/lib/envelope.c",
+        "dependencies/libvorbis/lib/floor0.c",
+        "dependencies/libvorbis/lib/floor1.c",
+        "dependencies/libvorbis/lib/info.c",
+        "dependencies/libvorbis/lib/lookup.c",
+        "dependencies/libvorbis/lib/lpc.c",
+        "dependencies/libvorbis/lib/lsp.c",
+        "dependencies/libvorbis/lib/mapping0.c",
+        "dependencies/libvorbis/lib/mdct.c",
+        "dependencies/libvorbis/lib/psy.c",
+        "dependencies/libvorbis/lib/registry.c",
+        "dependencies/libvorbis/lib/res0.c",
+        "dependencies/libvorbis/lib/sharedbook.c",
+        "dependencies/libvorbis/lib/smallft.c",
+        "dependencies/libvorbis/lib/synthesis.c",
+        "dependencies/libvorbis/lib/vorbisfile.c",
+        "dependencies/libvorbis/lib/window.c",
+        "dependencies/libvorbis/include/vorbis",
+        "dependencies/libvorbis/lib/*.h"
+      ]
+    },
+    {
+      "name": "Gosu",
+      "dependencies": {
+        "Gosu/libvorbis": [
+
+        ]
+      },
+      "frameworks": [
+        "OpenGL",
+        "OpenAL",
+        "IOKit",
+        "Carbon",
+        "Cocoa",
+        "AudioToolbox",
+        "ApplicationServices",
+        "ForceFeedback",
+        "AudioUnit",
+        "CoreAudio"
+      ],
+      "libraries": "iconv",
+      "compiler_flags": "-I/usr/local/include",
+      "xcconfig": {
+        "OTHER_LDFLAGS": "/usr/local/lib/libSDL2.a"
+      },
+      "public_header_files": "Gosu/*.hpp",
+      "source_files": [
+        "Gosu/*.hpp",
+        "src/**/*.hpp",
+        "src/Audio/AudioOpenAL.mm",
+        "src/Bitmap/Bitmap.cpp",
+        "src/Bitmap/BitmapApple.mm",
+        "src/Bitmap/BitmapColorKey.cpp",
+        "src/Bitmap/BitmapUtils.cpp",
+        "src/DirectoriesMac.mm",
+        "src/DirectoriesUnix.cpp",
+        "src/FileUnix.cpp",
+        "src/Graphics/BlockAllocator.cpp",
+        "src/Graphics/Color.cpp",
+        "src/Graphics/Graphics.cpp",
+        "src/Graphics/Image.cpp",
+        "src/Graphics/LargeImageData.cpp",
+        "src/Graphics/Resolution.cpp",
+        "src/Graphics/ResolutionApple.mm",
+        "src/Graphics/TexChunk.cpp",
+        "src/Graphics/Texture.cpp",
+        "src/Graphics/Transform.cpp",
+        "src/Input/Input.cpp",
+        "src/Input/TextInput.cpp",
+        "src/Inspection.cpp",
+        "src/IO.cpp",
+        "src/Math.cpp",
+        "src/Text/Font.cpp",
+        "src/Text/Text.cpp",
+        "src/Text/TextMac.cpp",
+        "src/Text/TextApple.mm",
+        "src/TimingApple.cpp",
+        "src/Utility.cpp",
+        "src/UtilityApple.mm",
+        "src/Window.cpp"
+      ],
+      "preserve_paths": "src/Audio/AudioOpenAL.cpp",
+      "requires_arc": false,
+      "platforms": {
+        "osx": "10.7"
+      }
+    },
+    {
+      "name": "GosuTouch",
+      "dependencies": {
+        "Gosu/libvorbis": [
+
+        ]
+      },
+      "frameworks": [
+        "CoreGraphics",
+        "OpenGLES",
+        "OpenAL",
+        "AudioToolbox",
+        "AVFoundation",
+        "QuartzCore"
+      ],
+      "libraries": "iconv",
+      "public_header_files": "Gosu/*.hpp",
+      "source_files": [
+        "Gosu/*.hpp",
+        "src/**/*.hpp",
+        "src/Audio/AudioOpenAL.mm",
+        "src/Bitmap/Bitmap.cpp",
+        "src/Bitmap/BitmapApple.mm",
+        "src/Bitmap/BitmapBMP.cpp",
+        "src/Bitmap/BitmapColorKey.cpp",
+        "src/Bitmap/BitmapUtils.cpp",
+        "src/DirectoriesTouch.mm",
+        "src/FileUnix.cpp",
+        "src/GosuView.mm",
+        "src/Graphics/BlockAllocator.cpp",
+        "src/Graphics/Color.cpp",
+        "src/Graphics/Graphics.cpp",
+        "src/Graphics/Image.cpp",
+        "src/Graphics/LargeImageData.cpp",
+        "src/Graphics/TexChunk.cpp",
+        "src/Graphics/Texture.cpp",
+        "src/Graphics/Transform.cpp",
+        "src/Input/AccelerometerReader.mm",
+        "src/Input/InputTouch.mm",
+        "src/Inspection.cpp",
+        "src/IO.cpp",
+        "src/Math.cpp",
+        "src/Text/Font.cpp",
+        "src/Text/Text.cpp",
+        "src/Text/TextApple.mm",
+        "src/TimingApple.cpp",
+        "src/Utility.cpp",
+        "src/UtilityApple.mm",
+        "src/WindowTouch.mm"
+      ],
+      "preserve_paths": "src/Audio/AudioOpenAL.cpp",
+      "requires_arc": false,
+      "platforms": {
+        "ios": "4.3"
+      }
+    }
+  ]
+}
