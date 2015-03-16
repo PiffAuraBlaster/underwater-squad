@@ -1,6 +1,7 @@
 class RPS
-  attr_accessor :player_score 
-  attr_accessor :opponent_score
+  attr_accessor :player_score, :player_choice 
+  attr_accessor :opponent_score, :opponent_choice
+  
   
   def initialize()
     @player_score = 0
@@ -26,13 +27,17 @@ class RPS
       when ['rock', 'paper'], ['scissors', 'rock'], ['paper', 'scissors']
          1
       else
-        puts ERROR
+        nil
       end 
-  end #End of comparison
+  end
+  #String, String -> Number 
+  #Takes a string from the user and a string from the AI and compares them and spits out a number afterwards. Either -1, 0, or 1.
+  #End of comparison
+  
   
   def givepoints  
     x = comparison(@player_choice, @opponent_choice)
-   if x == -1
+     if x == -1
        @player_score += 1
        @game_number += 1
      elsif x == 0
@@ -43,6 +48,7 @@ class RPS
        @opponent_score += 1
        @game_number += 1
      end 
+     return x
    end #End of givepoints
  
   def checkend
@@ -58,7 +64,6 @@ class RPS
    def run
        loop do
          play
-         comparison
          givepoints
          checkend
        end
@@ -73,7 +78,7 @@ class GameWindow < Gosu::Window
     super 1900, 1000, false
     self.caption = "SUPER ULTRA ARCADE ROCK PAPER SCISSORS ARENA ULTIMATE GAME OF THE YEAR EDITION"
     
-
+    @game = RPS.new
     @player_sprite = Gosu::Image.new(self, "PlAYER.png", false)   
     @opponent_sprite = Gosu::Image.new(self, "MegaMan.jpg", false)
     @rock_sprite = Gosu::Image.new(self, "rock.png", false)
@@ -83,8 +88,8 @@ class GameWindow < Gosu::Window
     @background_image = Gosu::Image.new(self, "arena.jpg", true)
     @textbox_image = Gosu::Image.new(self,"text_box.png", true)
     @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
-    @textline
-    @textline2
+    @textline = "YOU HAVE BEEN CHALLENGED BY ROCKMAN!"
+    @textline2 = "CLICK TO MAKE YOUR MOVE!"
     
   end
 
@@ -99,18 +104,50 @@ class GameWindow < Gosu::Window
     @paper_sprite.draw(1000,400,1)
     @scissors_sprite.draw(1400,400,1)
     @textbox_image.draw(600,700,1) 
-    @textline = @font.draw("YOU HAVE BEEN CHALLENGED BY ROCKMAN!", 650, 800, 2, 2, 2, 0xff000000)
-    @textline2 = @font.draw("CLICK TO MAKE YOUR MOVE!", 650, 900, 2, 2, 2, 0xff000000)
+    @font.draw(@textline, 650, 800, 2, 2, 2, 0xff000000)
+    @font.draw(@textline2, 650, 900, 2, 2, 2, 0xff000000)
     
-    if @opponent_choice == 'rock'
+    if @game.opponent_choice == 'rock'
       @rock_sprite.draw(750,50,1)
-    elsif @opponent_choice == 'paper'
+    elsif @game.opponent_choice == 'paper'
       @paper_sprite.draw(750,50,1)
-    elsif @opponent_choice == 'scissors'
+    elsif @game.opponent_choice == 'scissors'
       @scissors_sprite.draw(750,50,1)
     else 
       @questionblock_sprite.draw(800,100,1)
     end# End of opponent_choice pictures
+    #Condition to display sprite for opponent_choice
+    
+    if @game.opponent_choice == 'rock' and @game.player_choice == 'paper'
+      @textline = "YOU CHOSE PAPER, HE CHOSE ROCK"
+      @textline2 = "YOU GOT A POINT!"
+    elsif @game.opponent_choice == 'rock' and @game.player_choice == 'scissors'
+      @textline = "YOU CHOSE SCISSORS, HE CHOSE ROCK"
+      @textline2 = "HE GOT A POINT!"
+    elsif @game.opponent_choice == 'rock' and @game.player_choice == 'rock'
+      @textline = "YOU CHOSE ROCK, HE CHOSE ROCK"
+      @textline2 = "DRAW! TRY AGAIN"
+    elsif @game.opponent_choice == 'paper' and @game.player_choice == 'rock'
+      @textline = "YOU CHOSE ROCK, HE CHOSE PAPER"
+      @textline2 = "HE GOT A POINT!"
+    elsif @game.opponent_choice == 'paper' and @game.player_choice == 'rock'
+      @textline = "YOU CHOSE ROCK, HE CHOSE ROCK"
+      @textline2 = "DRAW! TRY AGAIN"
+    elsif @game.opponent_choice == 'paper' and @game.player_choice == 'rock'
+      @textline = "YOU CHOSE ROCK, HE CHOSE ROCK"
+      @textline2 = "DRAW! TRY AGAIN"
+    elsif @game.opponent_choice == 'scissors' and @game.player_choice == 'rock'
+      @textline = "YOU CHOSE ROCK, HE CHOSE ROCK"
+      @textline2 = "DRAW! TRY AGAIN"
+    elsif @game.opponent_choice == 'scissors' and @game.player_choice == 'rock'
+      @textline = "YOU CHOSE ROCK, HE CHOSE ROCK"
+      @textline2 = "DRAW! TRY AGAIN"
+    elsif @game.opponent_choice == 'scissors' and @game.player_choice == 'rock'
+      @textline = "YOU CHOSE ROCK, HE CHOSE ROCK"
+      @textline2 = "DRAW! TRY AGAIN"
+    end #end of this if statement.
+    #condition to change text depending on the outcomes.
+    
   end #End of Draw
   
   def needs_cursor?
@@ -127,13 +164,19 @@ class GameWindow < Gosu::Window
   end #End of button_down
   
   def handle_mouse_click()
+    @game.player_choice = nil
     if mouse_x > 600 and mouse_x < 900  and mouse_y < 650 and mouse_y > 400
-      rock
+      @game.player_choice = 'rock'
     elsif mouse_x > 999 and mouse_x < 1300 and mouse_y < 650 and  mouse_y > 400
-      paper
+      @game.player_choice = 'paper'   
     elsif mouse_x > 1399 and mouse_x < 1690 and mouse_y < 650 and  mouse_y > 400
-      scissors
+      @game.player_choice = 'scissors'
     end 
+    if @game.player_choice
+        moves = ['rock', 'paper', 'scissors',]
+        @game.opponent_choice = moves.sample
+        @game.givepoints()
+    end
   end #end of handle_mouse_click
       
 end #end of Gamewindow Class
