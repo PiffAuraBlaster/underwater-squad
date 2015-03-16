@@ -1,6 +1,6 @@
 class RPS
-  attr_accessor :player_score, :player_choice 
-  attr_accessor :opponent_score, :opponent_choice
+  attr_accessor :player_score, :player_choice, :player_win
+  attr_accessor :opponent_score, :opponent_choice, :opponent_win
   
   
   def initialize()
@@ -53,11 +53,9 @@ class RPS
  
   def checkend
     if @player_score == 3
-      playerwin
-      exit
+      @player_win = 1
     elsif @opponent_score == 3
-      opponentwin
-      exit
+      @opponent_win = 1
     end 
   end #End of checkend
    
@@ -145,6 +143,12 @@ class GameWindow < Gosu::Window
     elsif @game.opponent_choice == 'scissors' and @game.player_choice == 'scissors'
       @textline = "YOU CHOSE SCISSORS, HE CHOSE SCISSORS"
       @textline2 = "DRAW! TRY AGAIN"
+    elsif @game.player_win == 1
+      @textline = "YOU WIN!"
+      @textline2 = "CONGRATULATIONS!"
+    elsif @game.opponent_win == 1
+      @textline = "YOU LOSE!"
+      @textline2 = "HOW EMBARASSING!"
     end #end of this if statement.
     #condition to change text depending on the outcomes.
     
@@ -176,6 +180,7 @@ class GameWindow < Gosu::Window
         moves = ['rock', 'paper', 'scissors',]
         @game.opponent_choice = moves.sample
         @game.givepoints()
+        @game.checkend()
     end
   end #end of handle_mouse_click
       
