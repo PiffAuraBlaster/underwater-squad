@@ -6,7 +6,6 @@ class RPS
   def initialize()
     @player_score = 0
     @opponent_score = 0
-    @game_number = 1
   end 
   # Initializes the score values and the game number at the beginning.
      
@@ -39,33 +38,14 @@ class RPS
     x = comparison(@player_choice, @opponent_choice)
      if x == -1
        @player_score += 1
-       @game_number += 1
      elsif x == 0
        @player_score += 0
        @opponent_score += 0
-       @game_number += 0
      elsif x == 1
        @opponent_score += 1
-       @game_number += 1
      end 
      return x
    end #End of givepoints
- 
-  def checkend
-    if @player_score == 3
-      @player_win = 1
-    elsif @opponent_score == 3
-      @opponent_win = 1
-    end 
-  end #End of checkend
-   
-   def run
-       loop do
-         play
-         givepoints
-         checkend
-       end
-   end #end of run
    
 end #end of RPS Class
 
@@ -88,7 +68,6 @@ class GameWindow < Gosu::Window
     @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
     @textline = "YOU HAVE BEEN CHALLENGED BY ROCKMAN!"
     @textline2 = "CLICK TO MAKE YOUR MOVE!"
-    
   end
 
   def update
@@ -116,7 +95,14 @@ class GameWindow < Gosu::Window
     end# End of opponent_choice pictures
     #Condition to display sprite for opponent_choice
     
-    if @game.opponent_choice == 'rock' and @game.player_choice == 'rock'
+    
+    if @game.player_score > 2 
+      @textline = "YOU WIN! CONGRATULATIONS!"
+      @textline2 = "PRESS ESC TO EXIT"
+    elsif @game.opponent_score > 2  
+      @textline = "YOU LOSE! HOW EMBARASSING!"
+      @textline2 = "PRESS ESC TO EXIT"
+    elsif @game.opponent_choice == 'rock' and @game.player_choice == 'rock'
       @textline = "YOU CHOSE ROCK, HE CHOSE ROCK"
       @textline2 = "DRAW! REPLAY ROUND"
     elsif @game.opponent_choice == 'rock' and @game.player_choice == 'paper'
@@ -142,13 +128,7 @@ class GameWindow < Gosu::Window
       @textline2 = "HE GOT A POINT!"
     elsif @game.opponent_choice == 'scissors' and @game.player_choice == 'scissors'
       @textline = "YOU CHOSE SCISSORS, HE CHOSE SCISSORS"
-      @textline2 = "DRAW! TRY AGAIN"
-    elsif @game.player_win == 1
-      @textline = "YOU WIN!"
-      @textline2 = "CONGRATULATIONS!"
-    elsif @game.opponent_win == 1
-      @textline = "YOU LOSE!"
-      @textline2 = "HOW EMBARASSING!"
+      @textline2 = "DRAW! TRY AGAIN"   
     end #end of this if statement.
     #condition to change text depending on the outcomes.
     
@@ -176,12 +156,16 @@ class GameWindow < Gosu::Window
     elsif mouse_x > 1399 and mouse_x < 1690 and mouse_y < 650 and  mouse_y > 400
       @game.player_choice = 'scissors'
     end 
-    if @game.player_choice
+      if @game.player_choice
         moves = ['rock', 'paper', 'scissors',]
         @game.opponent_choice = moves.sample
         @game.givepoints()
-        @game.checkend()
-    end
+      end
+      if @game.player_score == 3
+        @game.player_win = 1
+      elsif @game.opponent_score == 3
+        @game.opponent_win = 1
+      end 
   end #end of handle_mouse_click
       
 end #end of Gamewindow Class
