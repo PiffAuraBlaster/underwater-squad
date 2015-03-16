@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <cstdlib>
 #include <cmath>
@@ -14,11 +13,15 @@ using namespace std;
 
 class GameWindow : public Gosu::Window
 {
+    std::auto_ptr<Gosu::Image> backgroundImage;
 public:
     GameWindow()
     :   Window(640, 480, false)
     {
-        setCaption(L"Gosu Tutorial Game");
+        setCaption(L"SUPER AMAZING ROCK PAPER SCISSORS PALOOZA");
+        
+        std::wstring filename = Gosu::resourcePrefix() + L"media/Space.png";
+        backgroundImage.reset(new Gosu::Image(graphics(), filename, true));
     }
     
     void update()
