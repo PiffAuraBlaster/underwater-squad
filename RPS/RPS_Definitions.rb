@@ -118,32 +118,32 @@ class GameWindow < Gosu::Window
     end# End of opponent_choice pictures
     #Condition to display sprite for opponent_choice
     
-    if @game.opponent_choice == 'rock' and @game.player_choice == 'paper'
+    if @game.opponent_choice == 'rock' and @game.player_choice == 'rock'
+      @textline = "YOU CHOSE ROCK, HE CHOSE ROCK"
+      @textline2 = "DRAW! REPLAY ROUND"
+    elsif @game.opponent_choice == 'rock' and @game.player_choice == 'paper'
       @textline = "YOU CHOSE PAPER, HE CHOSE ROCK"
       @textline2 = "YOU GOT A POINT!"
     elsif @game.opponent_choice == 'rock' and @game.player_choice == 'scissors'
       @textline = "YOU CHOSE SCISSORS, HE CHOSE ROCK"
       @textline2 = "HE GOT A POINT!"
-    elsif @game.opponent_choice == 'rock' and @game.player_choice == 'rock'
-      @textline = "YOU CHOSE ROCK, HE CHOSE ROCK"
-      @textline2 = "DRAW! TRY AGAIN"
     elsif @game.opponent_choice == 'paper' and @game.player_choice == 'rock'
       @textline = "YOU CHOSE ROCK, HE CHOSE PAPER"
       @textline2 = "HE GOT A POINT!"
-    elsif @game.opponent_choice == 'paper' and @game.player_choice == 'rock'
-      @textline = "YOU CHOSE ROCK, HE CHOSE ROCK"
+    elsif @game.opponent_choice == 'paper' and @game.player_choice == 'paper'
+      @textline = "YOU CHOSE PAPER, HE CHOSE PAPER"
       @textline2 = "DRAW! TRY AGAIN"
-    elsif @game.opponent_choice == 'paper' and @game.player_choice == 'rock'
-      @textline = "YOU CHOSE ROCK, HE CHOSE ROCK"
-      @textline2 = "DRAW! TRY AGAIN"
+    elsif @game.opponent_choice == 'paper' and @game.player_choice == 'scissors'
+      @textline = "YOU CHOSE SCISSORS, HE CHOSE PAPER"
+      @textline2 = "YOU GET A POINT!"
     elsif @game.opponent_choice == 'scissors' and @game.player_choice == 'rock'
-      @textline = "YOU CHOSE ROCK, HE CHOSE ROCK"
-      @textline2 = "DRAW! TRY AGAIN"
-    elsif @game.opponent_choice == 'scissors' and @game.player_choice == 'rock'
-      @textline = "YOU CHOSE ROCK, HE CHOSE ROCK"
-      @textline2 = "DRAW! TRY AGAIN"
-    elsif @game.opponent_choice == 'scissors' and @game.player_choice == 'rock'
-      @textline = "YOU CHOSE ROCK, HE CHOSE ROCK"
+      @textline = "YOU CHOSE ROCK, HE CHOSE SCISSORS"
+      @textline2 = "YOU GET A POINT!"
+    elsif @game.opponent_choice == 'scissors' and @game.player_choice == 'paper'
+      @textline = "YOU CHOSE PAPER, HE CHOSE SCISSORS"
+      @textline2 = "HE GOT A POINT!"
+    elsif @game.opponent_choice == 'scissors' and @game.player_choice == 'scissors'
+      @textline = "YOU CHOSE SCISSORS, HE CHOSE SCISSORS"
       @textline2 = "DRAW! TRY AGAIN"
     end #end of this if statement.
     #condition to change text depending on the outcomes.
