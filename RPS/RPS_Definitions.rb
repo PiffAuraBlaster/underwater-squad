@@ -57,7 +57,7 @@ class GameWindow < Gosu::Window
     self.caption = "SUPER ULTRA ARCADE ROCK PAPER SCISSORS ARENA ULTIMATE GAME OF THE YEAR EDITION"
     
     @game = RPS.new
-    @player_sprite = Gosu::Image.new(self, "player.png", false)   
+    @player_sprite = Gosu::Image.new(self, "PLAYER.png", false)   
     @opponent_sprite = Gosu::Image.new(self, "robot.png", false)
     @rock_sprite = Gosu::Image.new(self, "rock.png", false)
     @paper_sprite = Gosu::Image.new(self, "paper.png", false)
