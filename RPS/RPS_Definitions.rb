@@ -57,16 +57,16 @@ class GameWindow < Gosu::Window
     self.caption = "SUPER ULTRA ARCADE ROCK PAPER SCISSORS ARENA ULTIMATE GAME OF THE YEAR EDITION"
     
     @game = RPS.new
-    @player_sprite = Gosu::Image.new(self, "PlAYER.png", false)   
-    @opponent_sprite = Gosu::Image.new(self, "MegaMan.jpg", false)
+    @player_sprite = Gosu::Image.new(self, "player.png", false)   
+    @opponent_sprite = Gosu::Image.new(self, "robot.png", false)
     @rock_sprite = Gosu::Image.new(self, "rock.png", false)
     @paper_sprite = Gosu::Image.new(self, "paper.png", false)
     @scissors_sprite = Gosu::Image.new(self, "scissors.png", false)
     @questionblock_sprite = Gosu::Image.new(self,"?.png",false)
-    @background_image = Gosu::Image.new(self, "arena.jpg", true)
+    @background_image = Gosu::Image.new(self, "background.png", true)
     @textbox_image = Gosu::Image.new(self,"text_box.png", true)
     @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
-    @textline = "YOU HAVE BEEN CHALLENGED BY ROCKMAN!"
+    @textline = "YOU HAVE BEEN CHALLENGED BY ANDROIDGELA!"
     @textline2 = "CLICK TO MAKE YOUR MOVE!"
   end
 
@@ -75,7 +75,7 @@ class GameWindow < Gosu::Window
 
   def draw
     @background_image.draw(0,0,0)
-    @player_sprite.draw(-600,-200,1)
+    @player_sprite.draw(100,500,1)
     @opponent_sprite.draw(1250,0,1)
     @rock_sprite.draw(600,400,1)
     @paper_sprite.draw(1000,400,1)

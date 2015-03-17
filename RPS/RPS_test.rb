@@ -11,7 +11,9 @@ describe "RPS" do
   it "has player score start at 0" do
     @game.player_score.must_equal 0
   end
-  
+  it "has opponent score start at 0" do
+    @game.player_score.must_equal 0
+  end
   it "equals -1 when rock against scissors" do
     @game.comparison('rock', 'scissors').must_equal -1
   end
